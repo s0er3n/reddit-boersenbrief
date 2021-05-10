@@ -26,11 +26,10 @@ def give_example_selftext():
 
 def top10(subreddit):
     posts = []
-    for post in reddit.subreddit(subreddit).top("week", limit=100):
+    for post in reddit.subreddit(subreddit).top("week", limit=40):
         if post.selftext:
             posts += ("# "+post.title.strip() + "\n",
                       post.selftext)
-    print(posts)
     return posts
 
 

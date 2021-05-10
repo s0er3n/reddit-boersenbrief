@@ -1,4 +1,5 @@
 import pypandoc
+import re
 import json
 from urlextract import URLExtract
 from PIL import Image
@@ -54,10 +55,21 @@ def replace_emojis(md):
     return md
 
 
+def link_ticker(md):
+    ticker_in_text = set(re.findall(r'[$][A-Za-z][A-Za-z.0-9]*', md))
+    print(ticker_in_text)
+    for ticker in ticker_in_text:
+        print(ticker)
+        md = md.replace(
+            ticker, f" [{ticker}](https://de.finance.yahoo.com/quote/{ticker[1:]})")
+    return md
+
+
 if __name__ == "__main__":
     md = " ".join(top10("Wallstreetbets"))
     md = replace_emojis(md)
     md = replace_reddit_preview_urls_with_image(
         md)
+    md = link_ticker(md)
     print(md)
     make_pdf_from_md(md)
