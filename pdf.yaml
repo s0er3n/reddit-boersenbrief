@@ -1,0 +1,11 @@
+variables:
+  # include-before: \includepdf[pages=-]{Deckblatt.pdf}
+  # include-before: \usepackage{emoji}
+  # toc-title: Inhaltsverzeichnis
+  toc: true
+  # lof: true
+  # lot: true
+  # mainfont: DejaVuSans.ttf
+  # sansfont: DejaVuSans.ttf
+
+table-of-contents: true
